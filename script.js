@@ -43,4 +43,17 @@ timeblockArr.forEach((time, index) => {
 
 });
 
+//Save Btn to Local storage
+$(".saveBtn").on("click", function() {
+    let tBlockIndex = $(".saveBtn").index(this);
+    let tBlockText = $(".text").eq(tBlockIndex).val();
+    console.log(tBlockText, "was saved @ index " + tBlockIndex)
+    localStorage.setItem(timeblockArr[tBlockIndex], tBlockText);
+});
 
+
+//retrieve from local storage
+timeblockArr.forEach((time, index) => {
+    let savedText = localStorage.getItem(timeblockArr[index]);
+    $(".text").eq(index).val(savedText);
+});
